@@ -4,34 +4,6 @@ import argparse
 import threading
 import socket
 import keyboard
-
-frame = None
-inference = None
-
-client = None
-
-def tracking():
-    global frame
-    global inference
-    global chat_id
-    while gv.DETECTION_RUNNING:
-        boxes, scores, classes = inference.next()
-        if gv.PERSON_DETECTED:
-            update.message.reply_text("Pertsona dago")
-
-thread1 = threading.Thread(target=tracking)
-
-def piztu():
-    global thread1
-    gv.DETECTION_RUNNING = True
-    thread1.start()
-
-def itzali():
-    global frame
-    global thread1
-    thread1.stop()
-    gv.DETECTION_RUNNING = False
-    frame = None
     
 def main(model_path, ip, port):
     global inference
