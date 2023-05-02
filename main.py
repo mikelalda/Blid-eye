@@ -78,12 +78,10 @@ def main(ip, port):
     
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Create an alarm')
-    parser.add_argument('--model_path', value='models/yolov7-tiny-nms.trt', metavar='path', required=True,
-                        help='the path to model')
     parser.add_argument('--ip', value='192.168.1.28', required=True,
-                        help='ip of ESP path to model')
+                        help='ip of ESP')
     parser.add_argument('--port', value='80', required=True,
-                        help='the path to model')
+                        help='port of ESP')
     args = parser.parse_args()
 
     main(args.ip, args.port)
