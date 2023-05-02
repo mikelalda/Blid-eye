@@ -7,18 +7,12 @@ import additionals.globals as gv
 import urllib.request
 import http
 
-base = "http://192.168.1.137/"
-
-
-def transfer(my_url):   #use to send and receive data
-    try:
-        n = urllib.request.urlopen(base + my_url).read()
-        n = n.decode("utf-8")
-        return n
-
-    except http.client.HTTPException as e:
-        print(e)
-        return e
+server_ip = "192.168.1.137/"
+server_port = 80
+soc = socket.socket()
+soc.connect((server_ip, server_port))
+def transfer(mydata):   #use to send and receive data
+    soc.sendall(mydata)
 
 net = jetson.inference.detectNet("ssd-mobilenet-v2", threshold=0.5)
 camera = jetson.utils.videoSource("/dev/video0")      # '/dev/video0' for V4L2 and 'csi://0' for csi
