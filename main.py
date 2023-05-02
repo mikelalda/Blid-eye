@@ -24,6 +24,16 @@ camera = jetson.utils.videoSource("/dev/video0")      # '/dev/video0' for V4L2 a
 display = jetson.utils.videoOutput("display://0") # 'my_video.mp4' for file
 render_img = False
 
+names = ['person', 'bicycle', 'car', 'motorcycle', 'airplane', 'bus', 'train', 'truck', 'boat', 'traffic light', 
+                    'fire hydrant', 'stop sign', 'parking meter', 'bench', 'bird', 'cat', 'dog', 'horse', 'sheep', 'cow', 
+                    'elephant', 'bear', 'zebra', 'giraffe', 'backpack', 'umbrella', 'handbag', 'tie', 'suitcase', 'frisbee', 
+                    'skis', 'snowboard', 'sports ball', 'kite', 'baseball bat', 'baseball glove', 'skateboard', 'surfboard', 
+                    'tennis racket', 'bottle', 'wine glass', 'cup', 'fork', 'knife', 'spoon', 'bowl', 'banana', 'apple', 
+                    'sandwich', 'orange', 'broccoli', 'carrot', 'hot dog', 'pizza', 'donut', 'cake', 'chair', 'couch', 
+                    'potted plant', 'bed', 'dining table', 'toilet', 'tv', 'laptop', 'mouse', 'remote', 'keyboard', 'cell phone', 
+                    'microwave', 'oven', 'toaster', 'sink', 'refrigerator', 'book', 'clock', 'vase', 'scissors', 'teddy bear', 
+                    'hair drier', 'toothbrush']
+
 def main():
 
     while True:
@@ -33,7 +43,7 @@ def main():
             display.Render(img)
             display.SetStatus("Object Detection | Network {:.0f} FPS".format(net.GetNetworkFPS()))
         for detection in detections:
-            class_id = detection.ClassID
+            class_id = names[detection.ClassID-1]
             x1 = detection.Left   
             y1 = detection.Top    
             x2 = detection.Right  
