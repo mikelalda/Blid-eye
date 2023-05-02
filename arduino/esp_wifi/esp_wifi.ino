@@ -23,7 +23,7 @@ void loop(){
 
   if(CheckNewReq() == 1)
   {
-    //Serial.println("new request");
+    Serial.println(getPath());
     if (getPath()=="/1"){
       digitalWrite(left, HIGH); // turn the LED on
       digitalWrite(middle, LOW); // turn the LED on
