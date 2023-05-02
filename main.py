@@ -45,7 +45,7 @@ def main():
             display.Render(img)
             display.SetStatus("Object Detection | Network {:.0f} FPS".format(net.GetNetworkFPS()))
         for detection in detections:
-            class_id = names[detection.ClassID-1]
+            class_id = names[detection.ClassID]
             x1 = detection.Left/width 
             y1 = detection.Top/height
             x2 = detection.Right/width
