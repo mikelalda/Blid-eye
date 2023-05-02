@@ -95,6 +95,11 @@ def main():
                     check = transfer('0')
                     if check != "0":
                         print("An error ocurred while transfer")
+            else:
+                print(0)
+                check = transfer('0')
+                if check != "0":
+                    print("An error ocurred while transfer")
     
 if __name__ == '__main__':
     main()
