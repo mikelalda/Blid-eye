@@ -66,6 +66,13 @@ void loop(){
       delay(10); // wait for 10ms
     returnThisStr("6");
     }
+    else if (getPath()=="/0"){
+      digitalWrite(left, LOW); // turn the LED on
+      digitalWrite(middle, LOW); // turn the LED on
+      digitalWrite(right, LOW); // turn the LED on
+      delay(10); // wait for 10ms
+    returnThisStr("0");
+    }
 
     else        //here we receive data. You can receive pwm255 and the decode it to 255 and also get more variables like this
     {
