@@ -1,7 +1,7 @@
 import argparse
 import socket
-import jetson_inference
-import jetson_utils
+import jetson.inference
+import jetson.utils
 import additionals.globals as gv
 
 import urllib.request
@@ -19,9 +19,9 @@ def transfer(my_url):   #use to send and receive data
     except http.client.HTTPException as e:
         return e
 
-net = jetson_inference.detectNet("ssd-mobilenet-v2", threshold=0.5)
-camera = jetson_utils.videoSource("csi://0")      # '/dev/video0' for V4L2
-display = jetson_utils.videoOutput("display://0") # 'my_video.mp4' for file
+net = jetson.inference.detectNet("ssd-mobilenet-v2", threshold=0.5)
+camera = jetson.utils.videoSource("csi://0")      # '/dev/video0' for V4L2
+display = jetson.utils.videoOutput("display://0") # 'my_video.mp4' for file
 render_img = False
 
 def main(ip, port):
@@ -82,7 +82,7 @@ if __name__ == '__main__':
                         help='the path to model')
     parser.add_argument('--ip', value='192.168.1.28', required=True,
                         help='ip of ESP path to model')
-    parser.add_argument('--port', value='8800', required=True,
+    parser.add_argument('--port', value='80', required=True,
                         help='the path to model')
     args = parser.parse_args()
 
