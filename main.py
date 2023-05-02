@@ -7,11 +7,18 @@ import additionals.globals as gv
 import urllib.request
 import http
 
-server_ip = "192.168.1.137/"
-server_port = 80
+base = "http://192.168.1.137/"
 
-def transfer(mydata):   #use to send and receive data
-    soc.sendall(mydata)
+
+def transfer(my_url):   #use to send and receive data
+    try:
+        n = urllib.request.urlopen(base + my_url).read()
+        n = n.decode("utf-8")
+        return n
+
+    except http.client.HTTPException as e:
+        print(e)
+        return e
 
 net = jetson.inference.detectNet("ssd-mobilenet-v2", threshold=0.5)
 camera = jetson.utils.videoSource("/dev/video0")      # '/dev/video0' for V4L2 and 'csi://0' for csi
@@ -29,8 +36,7 @@ names = ['unlabeled', 'person', 'bicycle', 'car', 'motorcycle', 'airplane', 'bus
          'blender', 'book', 'clock', 'vase', 'scissors', 'teddy bear', 'hair drier', 'toothbrush']
 
 def main():
-    soc = socket.socket()
-    soc.connect((server_ip, server_port))
+
     while True:
         img = camera.Capture()
         detections = net.Detect(img)
@@ -38,12 +44,13 @@ def main():
             display.Render(img)
             display.SetStatus("Object Detection | Network {:.0f} FPS".format(net.GetNetworkFPS()))
         for detection in detections:
-            print(names[detection.ClassID])
+            check = transfer(names[detection.ClassID])
             class_id = names[detection.ClassID-1]
             x1 = detection.Left   
             y1 = detection.Top    
             x2 = detection.Right  
             y2 = detection.Bottom 
+            print(x1,x2)
             if class_id in gv.DETECTIONS:
                 '''
                 Suponiendo que boxes[0] is x.min, boxes[1] is y.min, boxes[2] is width and boxes[3] is height
