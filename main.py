@@ -39,17 +39,17 @@ def main():
 
     while True:
         img = camera.Capture()
+        height, width, channels = img.shape
         detections = net.Detect(img)
         if render_img:
             display.Render(img)
             display.SetStatus("Object Detection | Network {:.0f} FPS".format(net.GetNetworkFPS()))
         for detection in detections:
-            check = transfer(names[detection.ClassID])
             class_id = names[detection.ClassID-1]
-            x1 = detection.Left   
-            y1 = detection.Top    
-            x2 = detection.Right  
-            y2 = detection.Bottom 
+            x1 = detection.Left/width 
+            y1 = detection.Top/height
+            x2 = detection.Right/width
+            y2 = detection.Bottom/height
             print(x1,x2)
             if class_id in gv.DETECTIONS:
                 '''
