@@ -50,7 +50,6 @@ def main():
             y1 = detection.Top/height
             x2 = detection.Right/width
             y2 = detection.Bottom/height
-            print(x1,x2)
             if class_id in gv.DETECTIONS:
                 '''
                 Suponiendo que boxes[0] is x.min, boxes[1] is y.min, boxes[2] is width and boxes[3] is height
