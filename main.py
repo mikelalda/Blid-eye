@@ -9,8 +9,7 @@ import http
 
 server_ip = "192.168.1.137/"
 server_port = 80
-soc = socket.socket()
-soc.connect(server_ip, server_port)
+
 def transfer(mydata):   #use to send and receive data
     soc.sendall(mydata)
 
@@ -30,7 +29,8 @@ names = ['unlabeled', 'person', 'bicycle', 'car', 'motorcycle', 'airplane', 'bus
          'blender', 'book', 'clock', 'vase', 'scissors', 'teddy bear', 'hair drier', 'toothbrush']
 
 def main():
-
+    soc = socket.socket()
+    soc.connect((server_ip, server_port))
     while True:
         img = camera.Capture()
         detections = net.Detect(img)
