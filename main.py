@@ -78,9 +78,9 @@ def main(ip, port):
     
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Create an alarm')
-    parser.add_argument('--ip', value='192.168.1.28', required=True,
+    parser.add_argument('--ip', required=True,
                         help='ip of ESP')
-    parser.add_argument('--port', value='80', required=True,
+    parser.add_argument('--port', required=True,
                         help='port of ESP')
     args = parser.parse_args()
 
