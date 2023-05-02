@@ -10,7 +10,7 @@ import http
 server_ip = "192.168.1.137/"
 server_port = 80
 soc = socket.socket()
-soc.connect((server_ip, server_port))
+soc.connect(server_ip, server_port)
 def transfer(mydata):   #use to send and receive data
     soc.sendall(mydata)
 
