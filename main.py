@@ -27,7 +27,7 @@ render_img = False
 def main(ip, port):
 
     conn = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    conn.connect((ip,port))
+    conn.connect((ip,int(port)))
 
     while True:
         img = camera.Capture()
