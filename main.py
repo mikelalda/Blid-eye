@@ -7,7 +7,7 @@ import additionals.globals as gv
 import urllib.request
 import http
 
-base = "http://192.168.10.19/"
+base = "http://192.168.1.137/"
 
 
 def transfer(my_url):   #use to send and receive data
@@ -24,10 +24,7 @@ camera = jetson.utils.videoSource("csi://0")      # '/dev/video0' for V4L2
 display = jetson.utils.videoOutput("display://0") # 'my_video.mp4' for file
 render_img = False
 
-def main(ip, port):
-
-    conn = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    conn.connect((ip,int(port)))
+def main():
 
     while True:
         img = camera.Capture()
@@ -77,11 +74,4 @@ def main(ip, port):
                         print("An error ocurred while transfer")
     
 if __name__ == '__main__':
-    parser = argparse.ArgumentParser(description='Create an alarm')
-    parser.add_argument('--ip', required=True,
-                        help='ip of ESP')
-    parser.add_argument('--port', required=True,
-                        help='port of ESP')
-    args = parser.parse_args()
-
-    main(args.ip, args.port)
+    main()
