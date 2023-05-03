@@ -24,7 +24,7 @@ sudo apt-get install nano
 First of all we need to clone the repository of jetson inference and go to the folder jetson_inference.
 
 ```bash
-git clone https://github.com/mikelalda/Blid-eye.git
+git clone https://github.com/mikelalda/Blind-eye.git
 
 ```
 
@@ -40,7 +40,7 @@ Each time to run the container follow the next steps:
 
 ```bash
 cd jetdon-inference
-docker/run.sh --volume path_to/Blid-eye/:/Blid-eye
+docker/run.sh --volume path_to/Blind-eye/:/Blind-eye
 ```
 
 ## Run inference
@@ -52,6 +52,6 @@ In the file Alarm-Yolo/main.py we need to change the line 10 with ESP8266 IP add
 Once having done all the steps, run this in the docker terminal.
 
 ```bash
-cd /Blid-eye
+cd /Blind-eye
 python3 main.py
 ```
