@@ -47,7 +47,11 @@ docker/run.sh --volume path_to/Blind-eye/:/Blind-eye
 
 In the file Alarm-Yolo/main.py we need to change the line 10 with ESP8266 IP address.
 
-![](assets/20230412_121807_image.png)
+![](assets/2023-05-03_101412.png)
+
+Also the change the wifi of the ESP8266 in line 13 of Arduino code.
+
+![](assets/2023-05-03_101304.png)
 
 Once having done all the steps, run this in the docker terminal.
 
