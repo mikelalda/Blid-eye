@@ -13,8 +13,8 @@ Firs of all we will have to install python dependecies. For that open a terminal
 ```bash
 sudo apt-get update
 sudo apt-get install python3-pip -y
-sudo apt-get install dialog -y
-sudo apt-get install v4l2loopback-dkms
+sudo apt-get install dialog -y # Download the model
+sudo apt-get install v4l2loopback-dkms # To display the image
 sudo modprobe v4l2loopback
 sudo apt-get install nano 
 ```
