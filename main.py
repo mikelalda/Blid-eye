@@ -7,7 +7,7 @@ import additionals.globals as gv
 import urllib.request
 import http
 
-base = "http://192.168.1.137/"
+base = "http://192.168.1.107/" # Arduino prints the IP of the ESP8266
 
 
 def transfer(my_url):   #use to send and receive data

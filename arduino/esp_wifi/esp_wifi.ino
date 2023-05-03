@@ -10,7 +10,7 @@ int right = 4; // pin D2
 String path = "nothing";
 void setup(){
   Serial.begin(9600);
-  start("dlink-FB82","oikzd47889");  // Wifi details connect to
+  start("ZYXEL 1","123456789");  // Wifi details connect to
   // initialize GPIO 5 as an output
 
   pinMode(left, OUTPUT);
